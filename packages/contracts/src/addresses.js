@@ -1,7 +1,6 @@
-// This address points to a dummy ERC20 contract deployed on Ethereum Mainnet,
-// Goerli, Kovan, Rinkeby and Ropsten. Replace it with your smart contracts.
+// Robotos token contract
 const addresses = {
-  ceaErc20: "0xc1C0472c0C80bCcDC7F5D01A376Bd97a734B8815",
+  ceaErc20: "0x099689220846644F87D1137665CDED7BF3422747",
 };
 
 export default addresses;
