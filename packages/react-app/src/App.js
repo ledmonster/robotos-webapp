@@ -6,6 +6,7 @@ import {RobotosList} from "./components/robotos"
 import useWeb3Modal from "./hooks/useWeb3Modal";
 
 import GET_TRANSFERS from "./graphql/subgraph";
+import { RobopetsList } from "./components/robopets";
 
 function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
   const [account, setAccount] = useState("");
@@ -73,6 +74,7 @@ function App() {
       </Header>
       <Body>
         <RobotosList />
+        <RobopetsList />
       </Body>
     </div>
   );

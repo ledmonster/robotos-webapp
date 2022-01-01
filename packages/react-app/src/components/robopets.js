@@ -10,44 +10,44 @@ import styled from "styled-components";
 async function fetchTokenIDs() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const ceaErc20 = new Contract(addresses.robotos, abis.robotos, provider);
+    const ceaErc20 = new Contract(addresses.robopets, abis.robopets, provider);
     const myAddress = await signer.getAddress()
     const tokenIDs = await ceaErc20.tokensOfOwner(myAddress)
     return tokenIDs.map(v => { return ethers.utils.formatUnits(v, 0) })
 }
 
 
-const RobotosListComponent = styled.div`
+const RobopetsListComponent = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
 `
 
-const RobotosComponent = styled.div`
-width: 400px;
+const RobopetsComponent = styled.div`
+  width: 400px;
 `
 
-const RobotosHeader = styled.h5`
+const RobopetsHeader = styled.h5`
   margin-bottom: 10px;
 `;
 
-const RobotosImage = styled.img`
+const RobopetsImage = styled.img`
   height: 32vmin;
   margin-bottom: 10px;
   pointer-events: none;
 `;
 
-const RobotosTraits = styled.ul`
+const RobopetsTraits = styled.ul`
   font-size: calc(2px + 2vmin);
 `;
 
-export function Robotos(props) {
+export function Robopets(props) {
     const [imageURL, setImageURL] = useState("");
     const [traits, setTraits] = useState([])
 
     useEffect(() => {
-        const jsonURL = "https://gateway.pinata.cloud/ipfs/QmQh36CsceXZoqS7v9YQLUyxXdRmWd8YWTBUz7WCXsiVty/" + props.tokenID
+        const jsonURL = "https://robotos.mypinata.cloud/ipfs/Qmcsxe8HzSZeTheQeQzUyUJJZW596SRbS3ynKt9cEpLbJQ/" + props.tokenID
         fetch(jsonURL).then(res => res.json()).then(data => {
             setImageURL(data.image);
             setTraits(data.attributes);
@@ -55,23 +55,23 @@ export function Robotos(props) {
     }, [props.tokenID])
 
     return (
-        <RobotosComponent>
-            <RobotosHeader>Roboto #{props.tokenID}</RobotosHeader>
-            <RobotosImage src={imageURL} />
-            <RobotosTraits>
+        <RobopetsComponent>
+            <RobopetsHeader>Robopet #{props.tokenID}</RobopetsHeader>
+            <RobopetsImage src={imageURL} />
+            <RobopetsTraits>
                 {traits.map(trait => {
                     return <li key={props.tokenID + "_" + trait.trait_type}>{trait.trait_type}: {trait.value}</li>
                 })}
-            </RobotosTraits>
-        </RobotosComponent>
+            </RobopetsTraits>
+        </RobopetsComponent>
     )
 }
 
-Robotos.propTypes = {
+Robopets.propTypes = {
     tokenID: PropTypes.string.isRequired,
 }
 
-export function RobotosList() {
+export function RobopetsList() {
     const [tokenIDs, setTokenIDs] = useState([]);
 
     useEffect(() => {
@@ -81,12 +81,12 @@ export function RobotosList() {
         });
     }, [])
     return (
-        <RobotosListComponent>
+        <RobopetsListComponent>
             {tokenIDs.map(tokenID => {
-                return <Robotos key={tokenID} tokenID={tokenID} />
+                return <Robopets key={tokenID} tokenID={tokenID} />
             })}
-        </RobotosListComponent>
+        </RobopetsListComponent>
     )
 }
 
-Robotos.propTypes = {}
+Robopets.propTypes = {}
