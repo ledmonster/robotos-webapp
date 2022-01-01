@@ -2,12 +2,15 @@ import { useQuery } from "@apollo/react-hooks";
 import React, { useEffect, useState } from "react";
 
 import { Body, Button, Header } from "./components";
-import {RobotosList} from "./components/robotos"
+import { RobotosList } from "./components/robotos"
 import useWeb3Modal from "./hooks/useWeb3Modal";
 
 import GET_TRANSFERS from "./graphql/subgraph";
 import { RobopetsList } from "./components/robopets";
 import { HipposList } from "./components/hippos";
+
+import styled from "styled-components";
+
 
 function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
   const [account, setAccount] = useState("");
@@ -58,6 +61,13 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
   );
 }
 
+const AssetGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+`
+
 function App() {
   const { loading, error, data } = useQuery(GET_TRANSFERS);
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
@@ -74,9 +84,11 @@ function App() {
         <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
       </Header>
       <Body>
-        <RobotosList />
-        <RobopetsList />
-        <HipposList />
+        <AssetGroup>
+          <RobotosList />
+          <HipposList />
+          <RobopetsList />
+        </AssetGroup>
       </Body>
     </div>
   );

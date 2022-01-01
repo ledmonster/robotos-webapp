@@ -33,7 +33,7 @@ const RobotosHeader = styled.h5`
 `;
 
 const RobotosImage = styled.img`
-  height: 32vmin;
+  height: 320px;
   margin-bottom: 10px;
   pointer-events: none;
 `;
@@ -81,11 +81,11 @@ export function RobotosList() {
         });
     }, [])
     return (
-        <RobotosListComponent>
+        <React.Fragment>
             {tokenIDs.map(tokenID => {
                 return <Robotos key={tokenID} tokenID={tokenID} />
             })}
-        </RobotosListComponent>
+        </React.Fragment>
     )
 }
 

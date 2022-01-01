@@ -33,7 +33,7 @@ const HipposHeader = styled.h5`
 `;
 
 const HipposImage = styled.img`
-  height: 32vmin;
+  height: 320px;
   margin-bottom: 10px;
   pointer-events: none;
 `;
@@ -47,9 +47,10 @@ export function Hippos(props) {
     const [traits, setTraits] = useState([])
 
     useEffect(() => {
+        // See: https://stackoverflow.com/questions/46337471/
         const proxyURL = "https://cors-anywhere.herokuapp.com/"
         const jsonURL = "https://nft.bueno.art/api/d530a7b2d3fc4437b3d053feecde164e/token/metadata/" + props.tokenID
-        fetch(proxyURL + jsonURL, {mode: 'cors'}).then(res => res.json()).then(data => {
+        fetch(proxyURL + jsonURL, { mode: 'cors' }).then(res => res.json()).then(data => {
             setImageURL(data.image);
             setTraits(data.attributes);
         })
@@ -82,11 +83,11 @@ export function HipposList() {
         });
     }, [])
     return (
-        <HipposListComponent>
+        <React.Fragment>
             {tokenIDs.map(tokenID => {
                 return <Hippos key={tokenID} tokenID={tokenID} />
             })}
-        </HipposListComponent>
+        </React.Fragment>
     )
 }
 

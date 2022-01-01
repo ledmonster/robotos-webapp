@@ -33,7 +33,7 @@ const RobopetsHeader = styled.h5`
 `;
 
 const RobopetsImage = styled.img`
-  height: 32vmin;
+  height: 320px;
   margin-bottom: 10px;
   pointer-events: none;
 `;
@@ -81,11 +81,11 @@ export function RobopetsList() {
         });
     }, [])
     return (
-        <RobopetsListComponent>
+        <React.Fragment>
             {tokenIDs.map(tokenID => {
                 return <Robopets key={tokenID} tokenID={tokenID} />
             })}
-        </RobopetsListComponent>
+        </React.Fragment>
     )
 }
 
