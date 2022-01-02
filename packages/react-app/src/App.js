@@ -90,7 +90,7 @@ function App() {
       </div>
         <AssetGroup>
           <RobotosList />
-          <HipposList />
+          {/* <HipposList /> */}
         </AssetGroup>
         <AssetGroup>
           <RobopetsList />
