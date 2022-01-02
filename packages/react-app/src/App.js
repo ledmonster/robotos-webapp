@@ -85,6 +85,9 @@ function App() {
         <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
       </Header>
       <Body>
+      <div>
+        <h1>My Robotos Family</h1>
+      </div>
         <AssetGroup>
           <RobotosList />
           <HipposList />
