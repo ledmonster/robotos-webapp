@@ -64,6 +64,7 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
 const AssetGroup = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
 `
@@ -87,6 +88,8 @@ function App() {
         <AssetGroup>
           <RobotosList />
           <HipposList />
+        </AssetGroup>
+        <AssetGroup>
           <RobopetsList />
         </AssetGroup>
       </Body>
